@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
     bool under = false;
     while(!found){
         g_take_new_snapshot = true;
-        while(g_cam1_data.models[0].pose.position.z < 0.1 && g_cam1_data.models[0].pose.position.z > -0.1){
+        while(g_cam1_data.models.size() < 1){
             ros::spinOnce();
             ros::Duration(0.5).sleep();
         }
@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
         while(!under){
 	    ros::spinOnce();
 	    ros::Duration(0.5).sleep();
-	    if(g_cam1_data.models[0].pose.position.z < 0.2 && g_cam1_data.models[0].pose.position.z > -0.2){
+	    if(g_cam1_data.models[0].pose.position.z < 0.1 && g_cam1_data.models[0].pose.position.z > -0.1){
 	        //box under camera
 	        ROS_INFO("box is under");
 		under = true;
